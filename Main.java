@@ -49,17 +49,27 @@ public class Main {
     		cont++;
     		break;
     	case 2:
+    		int n1=0;
+    		try {
+        		System.out.println("inserire il locale del quale si vuole inserire la recensione : ");
+        		for(int i=0;i<cont;i++) {
+        			System.out.println((1+n1)+" - "+lo[i].denominazione);
+        		}
+        		n1 = Integer.valueOf(tastiera.readLine()).intValue();
+        	}catch(Exception e) {}
     		try {
         		System.out.println("inserire l'utente : ");
         		utente = tastiera.readLine();
-        		System.out.println("inserire le stelle : ");
-        		stelle = Integer.valueOf(tastiera.readLine()).intValue();
+        		System.out.println("inserire le stelle da 0 a 4: ");
+        		do{
+        			stelle = Integer.valueOf(tastiera.readLine()).intValue();
+        		}while(stelle<0 && stelle >4);
         		System.out.println("inserire il commento : ");
         		commento = tastiera.readLine();
         	}catch(Exception e){
         		System.out.println("errore di inserimento");
         	}
-    		lo[cont-1].registraRecensione(utente,commento ,stelle );
+    		lo[n1-1].registraRecensione(utente,commento ,stelle );
     		break;
     		
     	case 3:
@@ -80,7 +90,7 @@ public class Main {
     				}
     			}
     		}
-    		System.out.println("Il locale con la media valutazione migliore è: "+lo[0].denominazione);
+    		System.out.println("Il locale con la media valutazione migliore Ã¨: "+lo[0].denominazione);
     		break;
     	case 4:
     		for(int i=0;i<cont-1;i++) {
